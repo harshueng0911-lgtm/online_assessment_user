@@ -33,8 +33,16 @@ app = FastAPI(title="Assesso API", version="0.1.0")
 #   CORS_ORIGINS=https://assesso.example.com,https://www.assesso.example.com
 #
 # For local development the default is http://localhost:8082 (Vite default).
-_raw_origins = os.getenv("CORS_ORIGINS", "http://localhost:8082,http://127.0.0.1:8082")
-ALLOWED_ORIGINS: list[str] = [o.strip() for o in _raw_origins.split(",") if o.strip()]
+_raw_origins = os.getenv(
+    "CORS_ORIGINS",
+    "http://localhost:8082,http://127.0.0.1:8082,https://online-assessment-user.vercel.app"
+)
+
+ALLOWED_ORIGINS = [
+    origin.strip()
+    for origin in _raw_origins.split(",")
+    if origin.strip()
+]
 
 app.add_middleware(
     CORSMiddleware,
