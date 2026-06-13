@@ -1,0 +1,83 @@
+// Mock question bank used by the assessment interface.
+export const mockQuestions = [
+  {
+    id: "q1",
+    section: "Quantitative Aptitude",
+    text: "A train 150m long passes a pole in 15 seconds. What is its speed in km/hr?",
+    options: ["30", "36", "45", "54"],
+    answer: 1,
+  },
+  {
+    id: "q2",
+    section: "Quantitative Aptitude",
+    text: "If the cost price of 12 articles equals the selling price of 8 articles, find the profit percentage.",
+    options: ["25%", "33.33%", "50%", "66.66%"],
+    answer: 2,
+  },
+  {
+    id: "q3",
+    section: "Logical Reasoning",
+    text: "Find the next number in the series: 2, 6, 12, 20, 30, ?",
+    options: ["36", "40", "42", "44"],
+    answer: 2,
+  },
+  {
+    id: "q4",
+    section: "Logical Reasoning",
+    text: "Pointing to a man, a woman said, 'His mother is the only daughter of my mother.' How is the woman related to the man?",
+    options: ["Sister", "Mother", "Aunt", "Daughter"],
+    answer: 1,
+  },
+  {
+    id: "q5",
+    section: "Verbal Ability",
+    text: "Choose the word that is most nearly OPPOSITE in meaning to 'Lucid'.",
+    options: ["Clear", "Obscure", "Bright", "Simple"],
+    answer: 1,
+  },
+  {
+    id: "q6",
+    section: "Verbal Ability",
+    text: "Identify the grammatically correct sentence.",
+    options: [
+      "He don't likes coffee.",
+      "He doesn't like coffee.",
+      "He not like coffee.",
+      "He doesn't likes coffee.",
+    ],
+    answer: 1,
+  },
+  {
+    id: "q7",
+    section: "Computer Programming",
+    text: "What is the time complexity of binary search on a sorted array of n elements?",
+    options: ["O(n)", "O(log n)", "O(n log n)", "O(1)"],
+    answer: 1,
+  },
+  {
+    id: "q8",
+    section: "Computer Programming",
+    text: "Which data structure uses LIFO order?",
+    options: ["Queue", "Stack", "Heap", "Tree"],
+    answer: 1,
+  },
+  {
+    id: "q9",
+    section: "Computer Programming",
+    text: "Which of the following is NOT a JavaScript primitive type?",
+    options: ["String", "Number", "Object", "Boolean"],
+    answer: 2,
+  },
+  {
+    id: "q10",
+    section: "Computer Programming",
+    text: "What does SQL stand for?",
+    options: [
+      "Structured Query Language",
+      "Simple Query Language",
+      "Stored Query Logic",
+      "Sequential Query Language",
+    ],
+    answer: 0,
+  },
+];
