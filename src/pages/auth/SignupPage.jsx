@@ -19,50 +19,49 @@ export default function SignupPage() {
   });
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
-  const semesterOptions = [1, 2];
   const { signup } = useAuth();
   const navigate = useNavigate();
 
   const change = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
   const submit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (
-    !form.name ||
-    !form.studentId ||
-    !form.department ||
-    !form.year ||
-    !form.semester ||
-    !form.email ||
-    form.password.length < 6
-  ) {
-    return toast.error(
-      "Please fill all fields and use a 6+ character password"
-    );
-  }
+    if (
+      !form.name ||
+      !form.studentId ||
+      !form.department ||
+      !form.year ||
+      !form.semester ||
+      !form.email ||
+      form.password.length < 6
+    ) {
+      return toast.error(
+        "Please fill all fields and use a 6+ character password"
+      );
+    }
 
-  setLoading(true);
+    setLoading(true);
 
-  try {
-    await signup({
-      name: form.name,
-      student_id: form.studentId,
-      department: form.department,
-      year: Number(form.year),
-      semester: Number(form.semester),
-      email: form.email,
-      password: form.password,
-    });
+    try {
+      await signup({
+        name: form.name,
+        student_id: form.studentId,
+        department: form.department,
+        year: Number(form.year),
+        semester: Number(form.semester),
+        email: form.email,
+        password: form.password,
+      });
 
-    toast.success("Account created. Welcome to Assesso!");
-    navigate(ROUTES.DASHBOARD);
-  } catch (err) {
-    toast.error(err.message || "Failed to create account");
-  } finally {
-    setLoading(false);
-  }
-};
+      toast.success("Account created. Welcome to Assesso!");
+      navigate(ROUTES.DASHBOARD);
+    } catch (err) {
+      toast.error(err.message || "Failed to create account");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <AuthShell
@@ -85,106 +84,96 @@ export default function SignupPage() {
       </div>
 
       <form onSubmit={submit} className="space-y-4">
+
+        {/* Full Name */}
         <div>
           <label className="text-sm font-medium">Full name</label>
-          <div>
-            <label className="text-sm font-medium">
-              Roll Number / Student ID
-            </label>
-            <input
-              className="input mt-1.5"
-              placeholder="22CSE101"
-              value={form.studentId}
-              onChange={change("studentId")}
-            />
-          </div>
-          <div>
-            <label className="text-sm font-medium">
-              Department
-            </label>
-
-            <select
-              className="input mt-1.5"
-              value={form.department}
-              onChange={change("department")}
-            >
-              <option value="">
-                Select Department
-              </option>
-
-              <option value="CSE">
-                Computer Science
-              </option>
-
-              <option value="ECE">
-                Electronics
-              </option>
-
-              <option value="EEE">
-                Electrical
-              </option>
-
-              <option value="MECH">
-                Mechanical
-              </option>
-
-              <option value="CIVIL">
-                Civil
-              </option>
-            </select>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="text-sm font-medium">
-                Year
-              </label>
-
-              <select
-                className="input mt-1.5"
-                value={form.year}
-                onChange={change("year")}
-              >
-                <option value="">
-                  Select
-                </option>
-
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="text-sm font-medium">
-                Semester
-              </label>
-
-             <select
-                className="input mt-1.5"
-                value={form.semester}
-                onChange={change("semester")}
-               >
-
-                <option value="">Select Semester</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-              </select>
-            </div>
-
-          </div>
           <div className="relative mt-1.5">
             <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-            <input className="input pl-9" placeholder="Jane Doe" value={form.name} onChange={change("name")} />
+            <input
+              className="input pl-9"
+              placeholder="Jane Doe"
+              value={form.name}
+              onChange={change("name")}
+            />
           </div>
         </div>
+
+        {/* Student ID */}
+        <div>
+          <label className="text-sm font-medium">Roll Number / Student ID</label>
+          <input
+            className="input mt-1.5"
+            placeholder="22CSE101"
+            value={form.studentId}
+            onChange={change("studentId")}
+          />
+        </div>
+
+        {/* Department */}
+        <div>
+          <label className="text-sm font-medium">Department</label>
+          <select
+            className="input mt-1.5"
+            value={form.department}
+            onChange={change("department")}
+          >
+            <option value="">Select Department</option>
+            <option value="CSE">Computer Science</option>
+            <option value="ECE">Electronics</option>
+            <option value="EEE">Electrical</option>
+            <option value="MECH">Mechanical</option>
+            <option value="CIVIL">Civil</option>
+            <option value="synchro">Synchroserve Technologies</option>
+          </select>
+        </div>
+
+        {/* Year & Semester */}
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="text-sm font-medium">Year</label>
+            <select
+              className="input mt-1.5"
+              value={form.year}
+              onChange={change("year")}
+            >
+              <option value="">Select</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+          <div>
+            <label className="text-sm font-medium">Semester</label>
+            <select
+              className="input mt-1.5"
+              value={form.semester}
+              onChange={change("semester")}
+            >
+              <option value="">Select Semester</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Email */}
         <div>
           <label className="text-sm font-medium">Email</label>
           <div className="relative mt-1.5">
             <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-            <input type="email" className="input pl-9" placeholder="you@company.com" value={form.email} onChange={change("email")} />
+            <input
+              type="email"
+              className="input pl-9"
+              placeholder="you@company.com"
+              value={form.email}
+              onChange={change("email")}
+            />
           </div>
         </div>
+
+        {/* Password */}
         <div>
           <label className="text-sm font-medium">Password</label>
           <div className="relative mt-1.5">
@@ -205,12 +194,15 @@ export default function SignupPage() {
             </button>
           </div>
         </div>
+
         <p className="text-xs text-slate-500">
           By creating an account you agree to our Terms and Privacy Policy.
         </p>
+
         <button disabled={loading} className="btn-primary w-full py-3">
           {loading ? "Creating account..." : "Create account"}
         </button>
+
       </form>
     </AuthShell>
   );
